@@ -1,6 +1,5 @@
 mod utils;
 
-use std::fmt;
 use wasm_bindgen::prelude::*;
 
 // When the `wee_alloc` feature is enabled, use `wee_alloc` as the global
@@ -23,6 +22,8 @@ pub struct Universe {
 	height: u32,
 	cells: Vec<Cell>,
 }
+
+/// Private methods
 impl Universe {
 	fn get_index(&self, row: u32, column: u32) -> usize {
 		(row * self.width + column) as usize
@@ -45,6 +46,7 @@ impl Universe {
 	}
 }
 
+/// Public methods, exported to JavaScript
 #[wasm_bindgen]
 impl Universe {
 	#[wasm_bindgen(constructor)]
@@ -100,11 +102,6 @@ impl Universe {
 		self.cells = next;
 	}
 
-	/// Returns `String` representation of the `Universe`
-	pub fn render(&self) -> String {
-		self.to_string()
-	}
-
 	#[wasm_bindgen(method, getter)]
 	pub fn width(&self) -> u32 {
 		self.width
@@ -117,18 +114,5 @@ impl Universe {
 
 	pub fn cells(&self) -> *const Cell {
 		self.cells.as_ptr()
-	}
-}
-
-impl fmt::Display for Universe {
-	fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-		for line in self.cells.as_slice().chunks(self.width as usize) {
-			for &cell in line {
-				let symbol = if cell == Cell::Dead { '◻' } else { '◼' };
-				write!(f, "{}", symbol)?;
-			}
-			write!(f, "\n")?;
-		}
-		Ok(())
 	}
 }
