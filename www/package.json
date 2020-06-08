@@ -27,13 +27,15 @@
 	},
 	"homepage": "https://github.com/rustwasm/create-wasm-app#readme",
 	"dependencies": {
-		"rustwasm-game-of-life": "file:../pkg"
+		"rustwasm-game-of-life": "file:../pkg",
+		"typescript": "^3.9.5"
 	},
 	"devDependencies": {
+		"copy-webpack-plugin": "^5.0.0",
 		"hello-wasm-pack": "^0.1.0",
+		"ts-loader": "^7.0.5",
 		"webpack": "^4.29.3",
 		"webpack-cli": "^3.1.0",
-		"webpack-dev-server": "^3.1.5",
-		"copy-webpack-plugin": "^5.0.0"
+		"webpack-dev-server": "^3.1.5"
 	}
 }

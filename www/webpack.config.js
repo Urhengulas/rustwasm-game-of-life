@@ -11,4 +11,9 @@ module.exports = {
   plugins: [
     new CopyWebpackPlugin(['index.html'])
   ],
+  module: {
+    rules: [
+      { test: /\.ts$/, use: 'ts-loader' }
+    ]
+  }
 };

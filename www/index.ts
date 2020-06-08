@@ -17,6 +17,9 @@ canvas.height = (CELL_SIZE + 1) * height + 1;
 canvas.width = (CELL_SIZE + 1) * width + 1;
 
 const ctx = canvas.getContext("2d");
+if (!ctx) {
+    throw Error("CanvasRenderingContext2D is null");
+}
 
 const drawGrid = () => {
     ctx.beginPath();
