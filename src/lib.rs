@@ -47,6 +47,7 @@ impl Universe {
 
 #[wasm_bindgen]
 impl Universe {
+	/// Constructs a new `Universe`
 	pub fn new() -> Universe {
 		let width = 64;
 		let height = 64;
@@ -68,6 +69,7 @@ impl Universe {
 		}
 	}
 
+	/// Moves `Universe` one step into the future
 	pub fn tick(&mut self) {
 		let mut next = self.cells.clone();
 
@@ -97,6 +99,7 @@ impl Universe {
 		self.cells = next;
 	}
 
+	/// Returns `String` representation of the `Universe`
 	pub fn render(&self) -> String {
 		self.to_string()
 	}
