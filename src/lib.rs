@@ -1,5 +1,6 @@
 mod utils;
 
+use rand::prelude::*;
 use wasm_bindgen::prelude::*;
 
 // When the `wee_alloc` feature is enabled, use `wee_alloc` as the global
@@ -55,14 +56,9 @@ impl Universe {
 		let width = 64;
 		let height = 64;
 
+		let mut rng = thread_rng();
 		let cells = (0..(width * height))
-			.map(|i| {
-				if i % 2 == 0 || i % 7 == 0 {
-					Cell::Alive
-				} else {
-					Cell::Dead
-				}
-			})
+			.map(|_| if rng.gen() { Cell::Alive } else { Cell::Dead })
 			.collect();
 
 		Universe {
