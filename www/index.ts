@@ -23,9 +23,10 @@ if (!ctx) {
 
 const drawGrid = () => {
     ctx.beginPath();
+    ctx.lineWidth = 1 / window.devicePixelRatio;
     ctx.strokeStyle = GRID_COLOR;
 
-    // Vertial lines
+    // Vertical lines
     for (let i = 0; i <= width; i++) {
         let x = i * (CELL_SIZE + 1) + 1;
         ctx.moveTo(x, 0);
@@ -72,14 +73,12 @@ const drawCells = () => {
 };
 
 const renderLoop = () => {
-    universe.tick()
+    universe.tick();
 
     drawGrid();
     drawCells();
 
     requestAnimationFrame(renderLoop);
-}
+};
 
-drawGrid();
-drawCells();
 requestAnimationFrame(renderLoop);
