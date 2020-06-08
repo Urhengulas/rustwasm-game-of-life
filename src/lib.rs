@@ -47,6 +47,7 @@ impl Universe {
 
 #[wasm_bindgen]
 impl Universe {
+	#[wasm_bindgen(constructor)]
 	/// Constructs a new `Universe`
 	pub fn new() -> Universe {
 		let width = 64;
@@ -104,10 +105,12 @@ impl Universe {
 		self.to_string()
 	}
 
+	#[wasm_bindgen(method, getter)]
 	pub fn width(&self) -> u32 {
 		self.width
 	}
 
+	#[wasm_bindgen(method, getter)]
 	pub fn height(&self) -> u32 {
 		self.height
 	}
