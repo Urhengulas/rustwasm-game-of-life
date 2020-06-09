@@ -65,10 +65,7 @@ impl Universe {
 impl Universe {
 	#[wasm_bindgen(constructor)]
 	/// Constructs a new `Universe`
-	pub fn new() -> Universe {
-		let width = 64;
-		let height = 64;
-
+	pub fn new(width: u32, height: u32) -> Universe {
 		let mut rng = thread_rng();
 		let cells = (0..(width * height))
 			.map(|_| if rng.gen() { Cell::Alive } else { Cell::Dead })
