@@ -108,7 +108,8 @@ impl Universe {
 		self.height
 	}
 
-	pub fn cells(&self) -> *const Cell {
+	/// Get a pointer to the array of cells
+	pub fn cells_ptr(&self) -> *const Cell {
 		self.cells.as_ptr()
 	}
 }
